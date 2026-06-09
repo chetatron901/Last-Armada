@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cieegjjuq4nk0"]
+
+[ext_resource type="PackedScene" uid="uid://doksbt7c5yyv2" path="res://Assets/Models/AsteriodTest.blend" id="1_uahlq"]
+
+[node name="PlanetBase" unique_id=187792360 instance=ExtResource("1_uahlq")]
