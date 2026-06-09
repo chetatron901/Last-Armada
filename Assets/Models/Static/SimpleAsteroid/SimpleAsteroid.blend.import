@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://doksbt7c5yyv2"
-path="res://.godot/imported/SimpleAsteroid.blend-44762a39157adad643d7668367e87c36.scn"
+path="res://.godot/imported/SimpleAsteroid.blend-d2b5c94d3d9bc316c418b290441f98a9.scn"
 
 [deps]
 
-source_file="res://Assets/Models/SimpleAsteroid.blend"
-dest_files=["res://.godot/imported/SimpleAsteroid.blend-44762a39157adad643d7668367e87c36.scn"]
+source_file="res://Assets/Models/Static/SimpleAsteroid/SimpleAsteroid.blend"
+dest_files=["res://.godot/imported/SimpleAsteroid.blend-d2b5c94d3d9bc316c418b290441f98a9.scn"]
 
 [params]
 

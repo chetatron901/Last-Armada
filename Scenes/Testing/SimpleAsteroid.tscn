@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cieegjjuq4nk0"]
-
-[ext_resource type="PackedScene" uid="uid://doksbt7c5yyv2" path="res://Assets/Models/SimpleAsteroid.blend" id="1_56a8r"]
-
-[node name="PlanetBase" unique_id=1522768890 instance=ExtResource("1_56a8r")]
