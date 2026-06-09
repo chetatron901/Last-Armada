@@ -760,11 +760,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hmycq")
 
-[node name="Fighter" type="Node3D" unique_id=2019200506]
+[node name="Fighter" type="CharacterBody3D" unique_id=680097286]
 transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
 
 [node name="CockpitBase" type="MeshInstance3D" parent="." unique_id=2143984662]
-transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, 3.7354634, -1.2983329, 2.473114)
+transform = Transform3D(3.3333335, 0, 0, 0, 3.3333335, 0, 0, 0, 3.3333335, 0.013048931, -1.2983332, 12.405116)
 mesh = SubResource("ArrayMesh_73shj")
 
 [node name="Body" type="MeshInstance3D" parent="CockpitBase" unique_id=1198933800]
@@ -792,7 +792,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 mesh = SubResource("ArrayMesh_fkeay")
 
 [node name="RightEngineBase" type="MeshInstance3D" parent="." unique_id=1800575009]
-transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, 10.068795, -4.999999, -5.486789)
+transform = Transform3D(3.3333335, 0, 0, 0, 3.3333335, 0, 0, 0, 3.3333335, 6.346384, -4.999999, 4.445209)
 mesh = SubResource("ArrayMesh_wx7j1")
 
 [node name="RightEngineNose" type="MeshInstance3D" parent="RightEngineBase" unique_id=628646986]
@@ -824,7 +824,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1920929e-07, -0.4499991
 mesh = SubResource("ArrayMesh_jc0fg")
 
 [node name="LeftEngineBase" type="MeshInstance3D" parent="." unique_id=1589110355]
-transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, -2.597869, -4.999999, -5.486775)
+transform = Transform3D(3.3333335, 0, 0, 0, 3.3333335, 0, 0, 0, 3.3333335, -6.3202863, -4.999999, 4.445224)
 mesh = SubResource("ArrayMesh_ytesr")
 
 [node name="LeftFoldPoint" type="MeshInstance3D" parent="LeftEngineBase" unique_id=1795341647]
@@ -854,3 +854,7 @@ mesh = SubResource("ArrayMesh_yonn2")
 [node name="LeftInnerWing" type="MeshInstance3D" parent="LeftEngineBase" unique_id=1496830374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, -1.66893e-06, -0.4500034)
 mesh = SubResource("ArrayMesh_lsynh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=936407257]
+transform = Transform3D(-9.52381, 0, 8.3259835e-07, 1.2263467e-07, 9.419935, 1.4027767, -8.235172e-07, 1.4027767, -9.419935, 3.7354636, 19.121782, -47.69032)
+current = true

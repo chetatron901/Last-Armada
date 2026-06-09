@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://cieegjjuq4nk0"]
 
-[ext_resource type="PackedScene" uid="uid://doksbt7c5yyv2" path="res://Assets/Models/Static/SimpleAsteroid/SimpleAsteroid.blend" id="1_56a8r"]
+[ext_resource type="PackedScene" uid="uid://doksbt7c5yyv2" path="res://Assets/Models/Static/SimpleAsteroid/SimpleAsteroid.blend" id="1_481d2"]
+[ext_resource type="Texture2D" uid="uid://d14tvww668638" path="res://Assets/Models/Static/SimpleAsteroid/Asteroid1.png" id="2_y4hic"]
 
-[node name="PlanetBase" unique_id=1887848765 instance=ExtResource("1_56a8r")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4of76"]
+albedo_texture = ExtResource("2_y4hic")
+
+[node name="Asteroid" unique_id=1422099020 instance=ExtResource("1_481d2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Icosphere" parent="." index="0" unique_id=1524794126]
+material_override = SubResource("StandardMaterial3D_4of76")
