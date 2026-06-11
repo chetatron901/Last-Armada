@@ -7,6 +7,10 @@ extends CharacterBody3D
 @export_category("Mouse settings")
 @export var mouse_sensitivity: float = 0.001
 
+@onready var camera: Camera3D = $Camera3D
+
+var camera_pitch: float = 0.0
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -16,6 +20,10 @@ func _input(event: InputEvent) -> void:
 		var mouse_y: float = event.relative.y
 		
 		rotate_y(-mouse_x * mouse_sensitivity)
+		
+		camera_pitch -= mouse_y * mouse_sensitivity
+		camera_pitch = clamp(camera_pitch, deg_to_rad(-89.0), deg_to_rad(89.0))
+		camera.rotation.x = camera_pitch
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

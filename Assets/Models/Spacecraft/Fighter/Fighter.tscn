@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://d8lafu1fxpp4"]
 
+[ext_resource type="Script" uid="uid://dqs7c7ica1esv" path="res://Assets/Models/Spacecraft/Fighter/fighter.gd" id="1_oopv5"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gejvj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_023a1"]
@@ -762,6 +764,7 @@ shadow_mesh = SubResource("ArrayMesh_hmycq")
 
 [node name="Fighter" type="CharacterBody3D" unique_id=680097286]
 transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
+script = ExtResource("1_oopv5")
 
 [node name="CockpitBase" type="MeshInstance3D" parent="." unique_id=2143984662]
 transform = Transform3D(3.3333335, 0, 0, 0, 3.3333335, 0, 0, 0, 3.3333335, 0.013048931, -1.2983332, 12.405116)
