@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://d8lafu1fxpp4"]
 
-[ext_resource type="Script" uid="uid://dqs7c7ica1esv" path="res://Assets/Models/Spacecraft/Fighter/fighter.gd" id="1_oopv5"]
+[ext_resource type="Script" uid="uid://dqs7c7ica1esv" path="res://Assets/Scripts/fighter.gd" id="1_oopv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gejvj"]
 
@@ -861,3 +861,6 @@ mesh = SubResource("ArrayMesh_lsynh")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=936407257]
 transform = Transform3D(-9.52381, 0, 8.3259835e-07, 1.2263467e-07, 9.419935, 1.4027767, -8.235172e-07, 1.4027767, -9.419935, 3.7354636, 19.121782, -47.69032)
 current = true
+
+[node name="Timer" type="Timer" parent="." unique_id=946762893]
+one_shot = true
