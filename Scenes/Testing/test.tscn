@@ -7,6 +7,8 @@
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4enwd"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_la6yd"]
+
 [node name="Node3D" type="Node3D" unique_id=1079419266]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1825158627]
@@ -22,3 +24,7 @@ transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, -0.23754275, 1.05
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=29309857]
 transform = Transform3D(1, 0, 0, 0, 0.8305959, 0.55687565, 0, -0.55687565, 0.8305959, 0, 1.5314124, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1756196869]
+transform = Transform3D(8.321356, 0, 0, 0, 9.419172, 0, 0, 0, 1.5040498, 1.0152788, 0.8132591, 10.885326)
+mesh = SubResource("BoxMesh_la6yd")

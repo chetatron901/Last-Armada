@@ -1,56 +1,54 @@
 extends CharacterBody3D
 
-@export_category("Camera settings")
-@export var max_lean: float = 10.0
-@export var lean_sensitivity_x: float = 0.05
-@export var lean_sensitivity_y: float = 0.025
-@export var return_delay: float = 0.1
-@export var return_speed: float = 10.0
+@export_category("Movement")
+@export var forward_speed: float = 50.0
+@export var turn_speed: float = 2.0
 
-@onready var camera: Camera3D = $Camera3D
-@onready var timer: Timer = $Timer
+@export_category("Misc")
+@export var deadzone_radius: float = 20.0 # (pixels)
 
-var mouse_idle: bool = false
-var focused: bool = true
-var camera_origin: Vector3
+var screen_centre: Vector2
+var mouse_offset: Vector2 = Vector2.ZERO
+var is_focused: bool = true
 
 func _ready() -> void:
-	camera_origin = camera.position
-	timer.timeout.connect(_on_timer_timeout)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	
+	screen_centre = get_viewport().get_visible_rect().size / 2.0
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		mouse_offset = event.position - screen_centre
+	elif event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and not is_focused:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		is_focused = true
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and focused:
-		var mouse_x: float = event.relative.x
-		var mouse_y: float = event.relative.y
-		
-		# move cam based on relative mouse pos
-		camera.position.x -= mouse_x * lean_sensitivity_x
-		camera.position.y -= mouse_y * lean_sensitivity_y
-		
-		# clamp RELATIVE to camera_origin
-		camera.position.x = clamp(camera.position.x, camera_origin.x - max_lean, camera_origin.x + max_lean)
-		camera.position.y = clamp(camera.position.y, camera_origin.y - max_lean, camera_origin.y + max_lean)
-		
-		mouse_idle = false
-		timer.start(return_delay) 
-		
-		#!! ADD IN FIGHTER TURNING LOGIC LATER
-		
-		#free mouse with esc
-	elif event.is_action_pressed("ui_cancel") and focused:
+	if event is InputEventKey and event.is_action_pressed("ui_cancel") and is_focused:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		focused = false
-		
-		#lock mouse when return
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not focused:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		focused = true
+		is_focused = false
 
 func _physics_process(delta: float) -> void:
-	if mouse_idle and focused:
-		# smoothly lerp cam back to origin
-		camera.position = camera.position.lerp(camera_origin, return_speed * delta)
+	velocity = transform.basis.z * forward_speed
+	move_and_slide()
+	
+	if mouse_offset.length() > deadzone_radius and is_focused:
+		var screen_size = get_viewport().get_visible_rect().size
+		var normalised_tether = Vector2(
+			mouse_offset.x / (screen_size.x / 2.0),
+			mouse_offset.y / (screen_size.y / 2.0)
+		)
+		
+		normalised_tether = normalised_tether.limit_length(1.0)
+		
+		var pitch_input = -normalised_tether.y * turn_speed * delta
+		var yaw_input = -normalised_tether.x * turn_speed * delta
+		
+		rotate_object_local(Vector3.RIGHT, pitch_input)
+		rotate_y(yaw_input)
 
-func _on_timer_timeout() -> void:
-	mouse_idle = true
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_SIZE_CHANGED:
+		screen_centre = get_viewport().get_visible_rect().size / 2.0
